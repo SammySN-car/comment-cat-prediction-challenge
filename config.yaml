@@ -1,0 +1,85 @@
+seed: 42
+data:
+  train_file: train.csv
+  test_file: test.csv
+  sample_file: Sample.csv
+cv:
+  n_splits: 3
+  shuffle: true
+features:
+  numeric_cols:
+  - upvote
+  - downvote
+  - emoticon_1
+  - emoticon_2
+  - emoticon_3
+  - if_1
+  - if_2
+  categorical_cols:
+  - race
+  - gender
+  - religion
+  text_col: comment
+tfidf:
+  word:
+    analyzer: word
+    ngram_range:
+    - 1
+    - 2
+    max_features: 20000
+    min_df: 5
+    sublinear_tf: true
+  char:
+    analyzer: char_wb
+    ngram_range:
+    - 3
+    - 5
+    max_features: 15000
+    min_df: 5
+    sublinear_tf: true
+models:
+  lr:
+    max_iter: 1000
+    class_weight: balanced
+    random_state: 42
+    n_jobs: -1
+  sgd:
+    loss: hinge
+    max_iter: 1000
+    random_state: 42
+    n_jobs: -1
+  svm:
+    max_iter: 2000
+    random_state: 42
+  xgb:
+    device: cuda
+    tree_method: hist
+    random_state: 42
+    max_bin: 64
+    subsample: 0.8
+    colsample_bytree: 0.5
+    n_estimators: 700
+    max_depth: 5
+  lgb:
+    n_estimators: 2500
+    learning_rate: 0.05693
+    num_leaves: 138
+    max_bin: 31
+    feature_fraction: 0.833
+    lambda_l2: 0.92472
+    lambda_l1: 0.00012
+    min_child_samples: 12
+    bagging_fraction: 0.8437
+    bagging_freq: 7
+    path_smooth: 4.9283
+    extra_trees: true
+    objective: multiclass
+    num_class: 4
+    metric: None
+    n_jobs: -1
+    force_col_wise: true
+    verbosity: -1
+stacking:
+  final_estimator: xgb
+  cv: 3
+  n_jobs: 1
