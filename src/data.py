@@ -13,8 +13,8 @@ def load_data(train_path, test_path):
 
 def clean_text(text):
     text = str(text).lower()
-    text = re.sub(r"http\S+|www\S+"|r"http\S+|www\S+", "", text)
-    text = re.sub(r"[^a-z0-9!?., \\s]", " ", text)
+    text = re.sub(r"http\S+|www\S+", "", text)
+    text = re.sub(r"[^a-z0-9!?.,\s]", " ", text)
     return re.sub(r"\s+", " ", text).strip()
 
 
@@ -61,4 +61,5 @@ def prepare_data(train, test):
     num_cols = X.select_dtypes(include=np.number).columns.tolist()
 
     return X, Y, test, cat_cols, num_cols
+
 
