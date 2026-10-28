@@ -73,4 +73,4 @@ python main.py
 
 ## License
 
-MIT License
+The MIT License governs the use of this project. It grants users permission to copy, modify, and distribute the code. This license defines the legal terms for utilizing the software.
