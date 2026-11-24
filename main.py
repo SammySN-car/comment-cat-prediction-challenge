@@ -1,3 +1,4 @@
+"""Imports the os module. This module provides access to operating system functionalities. It allows the program to interact with the underlying system environment."""
 import os
 import gc
 import numpy as np
